@@ -9,3 +9,13 @@ module Hanoi where
         hanoi (n-1) source spare dest ++
         (moveDisk source dest) ++
         hanoi (n-1) spare dest source
+
+    getNumberOfDisks :: IO Int
+    getNumberOfDisks = do
+        putStrLn "Enter the number of disks"
+        read <$> getLine
+
+    getName :: String -> IO String
+    getName rodName = do
+        putStrLn $ "Enter the name for the " ++ rodName ++ " rod"
+        getLine
