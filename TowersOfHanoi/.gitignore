@@ -1,0 +1,46 @@
+# Haskell-specific
+dist/
+cabal-dev/
+cabal-sandbox/
+*.hi
+*.o
+*.a
+*.hp
+*.prof
+
+# Stack-specific
+.stack-work/
+
+# GHC generated files
+.hpc/
+.ghc.environment.*
+.cabal-sandbox/
+*.cabal
+
+# Compiled Haskell
+*.hi
+*.o
+
+# Editor-specific files
+*~
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Vim
+*.swp
+*.swo
+
+# Emacs
+*~
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Visual Studio Code
+.vscode/

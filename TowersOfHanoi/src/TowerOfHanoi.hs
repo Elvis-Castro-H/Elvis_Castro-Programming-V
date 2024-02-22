@@ -1,4 +1,4 @@
-module TowerOfHanoi where
+module TowerOfHanoi (solveHanoi, moveDisk, hanoi, ) where
 
 -- Represents the movement of a disk from one rod to another.
     moveDisk :: String -> String -> [(String, String)]
@@ -25,8 +25,8 @@ module TowerOfHanoi where
         getLine
 
 -- Main function to interactively solve the Towers of Hanoi problem.
-    main :: IO ()
-    main = do
+    solveHanoi :: IO ()
+    solveHanoi = do
         n <- getNumberOfDisks
         source <- getName "source"
         dest <- getName "destination"
