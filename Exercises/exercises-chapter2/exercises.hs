@@ -1,5 +1,9 @@
 -- 1. Work through the examples from this chapter using GHCi.
 
+import Data.Char
+import Text.Parsec
+import Text.Parsec.String
+
 examples :: IO ()
 examples = do
   putStrLn $ "f"
@@ -37,7 +41,38 @@ reverseList ls = reverse ls
 2*3+4*5
 2+3*4^5-}
 
---parenthesis :: String -> String
+{-
+(2^3)*4
+(2*3)+(4*5)
+2+(3*(4^5))
+-}
+
+isOperand :: Char -> Bool
+isOperand c = elem c "^*/+-"
+
+isDigit' :: Char -> Bool
+isDigit' c = isDigit c || (c == '.')
+
+tupleFromExpression :: String -> (String, Char, String)
+tupleFromExpression (x:y:z) = ([x],y,z)
+tupleFromExpression "" = ([],' ',[])
+
+precedence :: Char -> Int
+precedence '^' = 3
+precedence '*' = 2
+precedence '/' = 2
+precedence '+' = 1
+precedence '-' = 1
+precedence _   = 0
+
+addParentheses :: String -> String
+addParentheses [] = []
+addParentheses [x] = [x]
+addParentheses (x:y:z:xs)
+    | isOperand y && isDigit' x && isDigit' z && not (null xs) && isOperand (head xs) && (precedence y > precedence (head xs)) = "(" ++ [x,y,z] ++ ")" ++ addParentheses xs
+    | isOperand y && isDigit' x && isDigit' z = "(" ++ [x,y,z] ++ ")" ++ addParentheses xs
+    | otherwise = x : addParentheses (y:z:xs)
+addParentheses xs = xs
 
 {- 3. The script below contains three syntactic errors. Correct these errors and then check that your
 script works properly using GHCi.
