@@ -1,8 +1,6 @@
--- 1. Work through the examples from this chapter using GHCi.
-
 import Data.Char
-import Text.Parsec
-import Text.Parsec.String
+
+-- 1. Work through the examples from this chapter using GHCi.
 
 examples :: IO ()
 examples = do
