@@ -33,15 +33,6 @@ getNames' :: [(String, Int)] -> [String]
 getNames' [] = []
 getNames' (x:xs) = fst x : getNames' xs
 
--- 4
-getTuplesBetween :: String -> Int -> Int -> [(String, Int)]
-getTuplesBetween "" _ _ = []
-getTuplesBetween str min max = getTuplesBetween' (strToTuples str) min max
-
-getTuplesBetween' :: [(String, Int)] -> Int -> Int -> [(String, Int)]
-getTuplesBetween' [] _ _ = []
-getTuplesBetween' ((name, age):xs) min max = if age <= max && age >= min then (name, age) : getTuplesBetween' xs min max else getTuplesBetween' xs min max
-
 -- 3
 listOfLessThan :: String -> Int -> [(String, Int)]
 listOfLessThan "" _ = []
@@ -53,3 +44,11 @@ listOfLessThan' maxAge ((name, age) : xs)
   | age < maxAge = (name, age) : listOfLessThan' maxAge xs
   | otherwise = listOfLessThan' maxAge xs
 
+-- 4
+getTuplesBetween :: String -> Int -> Int -> [(String, Int)]
+getTuplesBetween "" _ _ = []
+getTuplesBetween str min max = getTuplesBetween' (strToTuples str) min max
+
+getTuplesBetween' :: [(String, Int)] -> Int -> Int -> [(String, Int)]
+getTuplesBetween' [] _ _ = []
+getTuplesBetween' ((name, age):xs) min max = if age <= max && age >= min then (name, age) : getTuplesBetween' xs min max else getTuplesBetween' xs min max
