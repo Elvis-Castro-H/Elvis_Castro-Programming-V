@@ -1,4 +1,4 @@
-module LogParser(parseLogs) where
+module LogParser(parseLogs, MessageType(..), LogMessage(..)) where
 
 data MessageType = Info | Warning | Error Int deriving (Show, Eq)
 
@@ -7,6 +7,9 @@ type TimeStamp = Int
 data LogMessage = LogMessage MessageType TimeStamp String
                 | Unknown String
                 deriving (Show, Eq)
+
+instance Ord LogMessage where
+  compare (LogMessage _ ts1 _) (LogMessage _ ts2 _) = compare ts1 ts2                
 
 charFromStr :: String -> Char
 charFromStr (x:_) = x
@@ -40,4 +43,3 @@ getMsgError (x:xs) = if x == ' ' then xs else getMsgError xs
 
 getTimeStampString :: [String] -> (TimeStamp, String)
 getTimeStampString (x:xs) = (read x, unwords xs)
-
