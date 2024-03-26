@@ -1,2 +1,9 @@
+import TicTacToeTest
+import ValidatorTest
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = do
+    putStrLn "Running Tic Tac Toe tests..."
+    mainTicTacToeTest
+    mainValidatorTest
+    
