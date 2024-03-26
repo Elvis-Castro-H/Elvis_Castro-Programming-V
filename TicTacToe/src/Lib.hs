@@ -2,5 +2,8 @@ module Lib
     ( someFunc
     ) where
 
+import ConsoleGame
+
 someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+someFunc = do
+    main
